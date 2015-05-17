@@ -18,7 +18,7 @@ body {
 /* The element to be centered, can also be of any width and height */ 
 .centered {
   display: inline-block;
-  width: 70%;
+  width: 75%;
   vertical-align: middle;
 }
 
@@ -26,7 +26,7 @@ h1 {
   text-align: center;
   color: #008E05;
   font-weight:lighter;
-  font-size: 5.9vw;
+  font-size: 6.5vw;
   margin: 0;
 }
 
@@ -34,5 +34,5 @@ p {
   color:#666;
   font-weight:lighter;
   text-align: center;
-  font-size: 1.9vw;
+  font-size: 2vw;
 }
