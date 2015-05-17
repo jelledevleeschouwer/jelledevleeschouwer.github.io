@@ -1,10 +1,5 @@
-@font-face {
-    font-family: avenir;
-    src: url(AvenirNext-UltraLight.tff);
-}
-
 body {
-  font-family: avenir;
+  font-family: Avenir Next, "Helvetica Neue Light", "Helvetica Neue", sans-serif;
   background-image: radial-gradient(circle, #FFF 12%, #CCC);
   overflow: scroll;
 }
@@ -36,5 +31,6 @@ h1 {
 
 p {
   color:#666;
+  font-weight:lighter;
   text-align: center;
 }
