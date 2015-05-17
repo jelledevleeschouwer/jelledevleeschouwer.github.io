@@ -35,4 +35,5 @@ p {
   font-weight:lighter;
   text-align: center;
   font-size: 3.3vw;
+  max-font-size: 35px;
 }
