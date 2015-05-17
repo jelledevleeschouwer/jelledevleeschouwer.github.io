@@ -9,28 +9,30 @@ body {
 }
  
 .block:before {
-  content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
+  content: '';
 }
 
 /* The element to be centered, can also be of any width and height */ 
 .centered {
   display: inline-block;
-  vertical-align: middle;
   width: 70%;
+  vertical-align: middle;
 }
 
 h1 { 
-  font-weight:lighter;
-  font-size: 50pt;
-  color: #008E05;
   text-align: center;
+  color: #008E05;
+  font-weight:lighter;
+  font-size: 5.9vw;
+  margin: 0;
 }
 
 p {
   color:#666;
   font-weight:lighter;
   text-align: center;
+  font-size: 1.9vw;
 }
