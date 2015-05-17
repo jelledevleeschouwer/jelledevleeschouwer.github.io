@@ -1,0 +1,33 @@
+@font-face {
+    font-family: avenir;
+    src: url(AvenirNext-UltraLight.tff);
+}
+@font-face {
+    font-family: avenir-italic;
+    src: url(AvenirNext-UltraLightItalic.tff);
+}
+
+body {
+    font-family: avenir;
+    background-image: radial-gradient(circle, #FFF 12%, #CCC);
+    overflow: scroll;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 { 
+    font-weight:lighter;
+    font-size: 50pt;
+    color: #008E05;
+    text-align: center;
+}
+
+p {
+    color:#666;
+    text-align: center;
+}
