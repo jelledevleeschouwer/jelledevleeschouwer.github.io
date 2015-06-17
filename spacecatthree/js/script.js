@@ -1,4 +1,5 @@
 var isLarge, isMedium, isSmall, checkSize;
+var space, cat, three;
 
 isSmall = function() {
   return matchMedia(Foundation.media_queries['small']).matches && !matchMedia(Foundation.media_queries.medium).matches;
@@ -11,6 +12,10 @@ isMedium = function() {
 isLarge = function() {
   return matchMedia(Foundation.media_queries['large']).matches;
 };
+
+var space = document.getElementById("space");
+var cat = document.getElementById("cat");
+var three = document.getElementById("three");
 
 checkSize = function() {
 	if (isSmall()) {
