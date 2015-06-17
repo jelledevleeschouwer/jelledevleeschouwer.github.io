@@ -1,4 +1,4 @@
-var isLarge, isMedium, isSmall;
+var isLarge, isMedium, isSmall, checkSize;
 
 isSmall = function() {
   return matchMedia(Foundation.media_queries['small']).matches && !matchMedia(Foundation.media_queries.medium).matches;
@@ -12,8 +12,7 @@ isLarge = function() {
   return matchMedia(Foundation.media_queries['large']).matches;
 };
 
-
-window.onresize = function(event) {
+checkSize = function() {
 	if (isSmall()) {
 		var x = document.getElementsByClassName("menu-item");
 		for (var i = 0; i < x.length; i++) {
@@ -26,3 +25,6 @@ window.onresize = function(event) {
 		}
 	}
 };
+
+window.onresize = checkSize;
+window.onload = checkSize;
