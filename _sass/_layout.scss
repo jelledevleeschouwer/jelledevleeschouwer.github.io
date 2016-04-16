@@ -2,12 +2,12 @@
  * Site header
  */
 
-.block {
-    margin:300px 20px 200px;
+.header {
+    margin:300px 20px 210px;
     text-align: center;
 }
 
-.block:before {
+.header:before {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -36,6 +36,18 @@
     &,
     &:visited {
         color: $brand-color;
+    }
+}
+
+@include media-query($on-laptop) {
+    .site-title {
+        font-size: 50px;
+    }
+}
+
+@include media-query($on-palm) {
+    .site-title {
+        font-size: 30px;
     }
 }
 
@@ -114,11 +126,12 @@
  */
 .site-footer {
     border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+    padding: 10px 0;
 }
 
 .footer-heading {
     font-size: 18px;
+    margin-top: 20px;
     margin-bottom: $spacing-unit / 2;
 }
 
@@ -201,6 +214,7 @@
 
 .post-meta {
     font-size: $small-font-size;
+    text-align: center;
     color: $grey-color;
 }
 
@@ -222,6 +236,7 @@
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
+    text-align: center;
 
     @include media-query($on-laptop) {
         font-size: 36px;
