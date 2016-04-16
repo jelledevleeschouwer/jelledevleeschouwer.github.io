@@ -7,13 +7,6 @@
     text-align: center;
 }
 
-@include media-query($on-laptop) {
-    .header {
-        margin-top: 300px;
-        margin-bottom: 210px;
-    }
-}
-
 @include media-query($on-palm) {
     .header {
         margin-top: 150px;
