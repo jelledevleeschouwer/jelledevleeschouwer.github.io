@@ -153,6 +153,14 @@ pre {
   margin: 300px 20px 210px;
   text-align: center; }
 
+@media screen and (max-width: 800px) {
+  .header {
+    margin-top: 300px;
+    margin-bottom: 210px; } }
+@media screen and (max-width: 600px) {
+  .header {
+    margin-top: 150px;
+    margin-bottom: 100px; } }
 .header:before {
   display: inline-block;
   height: 100%;
