@@ -1,5 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,300,700);
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 /**
  * Reset some basic elements
  */
@@ -13,7 +13,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font: 400 16px/1.5 "Source Code Pro";
+  font: 400 16px/1.5 "Source Code Pro", monospace;
   color: #111;
   background-color: #fafafa;
   -webkit-text-size-adjust: 100%;
