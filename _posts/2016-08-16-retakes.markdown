@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "Retakes"
-date:   2016-08-16 21:39:42 +0200
+title: Retakes
+date: '2016-08-16 21:39:42 +0200'
 categories: status
+published: true
 ---
 
-I'm having a retake of maths this saturday
+I'm having a retake of maths this saturday, which is a bummer. It's my only retake, so I'm quite pleased about this. But still, retakes are not really my _kind of thing..._
+
+On the bright side, next week I will be programming and working on picoTCP again. I'm really looking forward to it, and I'm eager to start! 
