@@ -8,6 +8,4 @@ published: true
 
 I'm having a retake of maths this saturday, which is a bummer. It's my only retake, so I'm quite pleased about this. But still, retakes are not really my _kind of thing..._
 
-![Maths]({{ site.url }}/assets/img/textbook.jpg)
-
 On the bright side, next week I will be programming and working on picoTCP again. I'm really looking forward to it, and I'm eager to start!
