@@ -1,0 +1,61 @@
+---
+layout: post
+title: First day - preparing
+date: '2016-08-22 18:39:42 +0200'
+categories: picoTCP
+---
+### Introduction
+*So today I started working at [Altran Benelux](www.altran.be) in Leuven again, working on
+[picoTCP](www.picotcp.com). picoTCP is an open source TCP/IP-stack for embedded
+devices they're developing from scratch with an eye on the 'Internet of Things'.
+I've already worked there for a couples of times as a summer intern, implementing **mDNS** and
+**DNS-SD** for example, two IETF protocols allowing Zero Configuration
+Networking. Last year I began with implementing a 6LoWPAN adaption layer for
+pico. I succeeded in implementing a raw version of 6LoWPAN, including the
+foundations for a link-layer mesh protocol allowing mesh routing in the
+LoWPAN. This implementation however, was rather immature and definitely not
+ready to be released. This year, I plan to refactor the module, which is over
+3000 lines of code, into multiple layers, complying better with the architecture of
+picoTCP and the TCP/IP protocol stack. Today I started with planning and
+designing for the refactoring. For more information about 6LoWPAN I refer to the
+book [6LoWPAN: The Wireless Embedded Internet](https://amzn.com/0470747994).*
+
+### The stack and 6LoWPAN
+The idea is to split the module, how it is now, into multiple layers. These
+layers are represented by three modules in picoTCP, ***pico_sixlowpan***,
+***pico_ieee802154*** and ***pico_ll_mesh***.
+
+#### Transmitting frames
+When the IPv6 layer wants to send a frame over the LoWPAN it calls `pico_datalink_send(...)`. On initialisation of a 6LoWPAN-device, the link layer mode of the device has to be set to `LL_MODE_SIXLOWPAN`.
+By setting this mode, the stack knows that if it receives a frame from the IPv6-module, it has to be sent through the 6LoWPAN adaption layer prior to handing it over to the
+device driver. So the stack enqueues the frame in the outgoing frame-queue of the 6LoWPAN-layer. On another time, the scheduler calls the generic processing function for
+all the protocols in picoTCP called `pico_process_out(...)`. This is where all the 6LoWPAN magic happens.
+
+So, the 6LoWPAN layer dequeues the frame from it's outgoing queue to process it, what has to happen next? First, it has to check if the frame fits inside a single IEEE802.15.4 MTU of 127 bytes.
+6LoWPAN doesn't get the full 127 bytes however, IEEE802.15.4 also needs a part of it for its MAC header and FCS at the end. To check this it calls `pico_802154_push(...)`.
+This function is **called with the IPv6 source and destination address as additional parameters**. This is because, if the IPv6 header is compressed the link layer can no longer derive
+the addresses easily from the frame, so if the 6LoWPAN adaption layer compresses the frame, it is important that it remembers the destination and source address.
+Based on these IP addresses, the link layer derives the L2 addresses from the IPv6-ND tables. It could be that link layer meshing is enabled on the interface, so the IEEE802.15.4 can determine
+how many bytes it additionally needs on top of it's actual MAC header itself. From these estimations, the module can either decide to enqueue the frame directly into its outgoing frame queue to
+process it later on (shown in figure 1 below). OR, the link layer can find the IPv6 payload to big to fit in a single frame and can return the amount of bytes available in the link layer frame for
+IPv6 payload.
+
+
+Based on this size the 6LoWPAN adaption layer can start compressing the frame and if needed, even fragmenting. If fragmenting is required, the module copies a chunk from the
+entire packet and initializes a cookie identifier inside the `pico_frame`. Then it inserts a cookie for that frame in a tree, and indicates to the stack that transmitting "*failed*".
+When the failure is indicated, the stack will not immediatelly discard the frame, but will try later on. Only when every fragment is sent, the adaption layer indicates a success and
+the stack can safely discard the frame.
+
+
+So eventually, the frame will be inside the IEEE802.15.4's outgoing frame-queue, and the scheduler will call the module's processing function. This is the time where the MAC header is
+provided optionally a Link Layer Mesh Dispatch header is prepended before the 6LoWPAN-frame itself. Finally, the IEEE802.15.4-module call pico_sendto_dev to enqueue the
+frame in the device-driver's outgoing frame queue. At some time that the scheduler likes, it iterates over all the devices, the frame is dequeued from the device's queue and the frame is
+sent through the device driver where the frame is transmitted through it's radio.
+
+That's how the sending side briefly works. There's a lot more going on, of course, but that would lead me too much into detail. How the adaption layer itself works, with compression and fragmentation is probrably for a following post.
+But the next post will be about receiving, reassembly and maybe already IPv6 Neighbour Discovery.
+
+![Image 1]({{ site.url }}/assets/img/6lp_sending.jpg)
+
+
+
