@@ -5,8 +5,8 @@ date: '2016-08-22 18:39:42 +0200'
 categories: picoTCP
 ---
 ### Introduction
-*So today I started working at [Altran Benelux](www.altran.be) in Leuven again, working on
-[picoTCP](www.picotcp.com). picoTCP is an open source TCP/IP-stack for embedded
+*So today I started working at [Altran Benelux](http://www.altran.be) in Leuven again, working on
+[picoTCP](http://www.picotcp.com). picoTCP is an open source TCP/IP-stack for embedded
 devices they're developing from scratch with an eye on the 'Internet of Things'.
 I've already worked there for a couples of times as a summer intern, implementing **mDNS** and
 **DNS-SD** for example, two IETF protocols allowing Zero Configuration
