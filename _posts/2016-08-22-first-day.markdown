@@ -25,7 +25,7 @@ The idea is to split the module, how it is now, into multiple layers. These
 layers are represented by three modules in picoTCP, ***pico_sixlowpan***,
 ***pico_ieee802154*** and ***pico_ll_mesh***.
 
-#### Transmitting frames
+### Transmitting frames
 When the IPv6 layer wants to send a frame over the LoWPAN it calls `pico_datalink_send(...)`. On initialisation of a 6LoWPAN-device, the link layer mode of the device has to be set to `LL_MODE_SIXLOWPAN`.
 By setting this mode, the stack knows that if it receives a frame from the IPv6-module, it has to be sent through the 6LoWPAN adaption layer prior to handing it over to the
 device driver. So the stack enqueues the frame in the outgoing frame-queue of the 6LoWPAN-layer. On another time, the scheduler calls the generic processing function for
