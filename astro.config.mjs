@@ -25,8 +25,7 @@ const whenExternalScripts = (items = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: 'https://jelledevleeschouwer.github.io',
-  base: 'jelledevleeschouwer.github.io',
+  site: 'https://elpee.io',
   output: 'static',
 
   integrations: [
