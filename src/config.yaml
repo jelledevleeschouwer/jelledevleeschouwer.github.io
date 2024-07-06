@@ -1,7 +1,7 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
-  base: '/'
+  name: elpee.io
+  site: 'https://blog.elpee.io'
+  base: 'jelledevleeschouwer.github.io/'
   trailingSlash: false
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: elpee.io
+    template: '%s — elpee.io'
+  description: "\U0001F680 Embedded Low Power Electronics Engineering"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: elpee.io
     images:
       - url: '~/assets/images/default.png'
         width: 1200
